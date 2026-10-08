@@ -13,12 +13,6 @@ export interface UserRecord {
 export async function initDatabase(): Promise<void> {
   if (!localStorage.getItem(STORAGE_KEY)) {
     localStorage.setItem(STORAGE_KEY, HEADER);
-    await insertUser({
-      email: "admin@unicaribe.edu",
-      passwordHash: hashPassword("Admin123"),
-      nombre: "Administrador",
-      fechaRegistro: new Date().toISOString().split("T")[0],
-    });
   }
 }
 

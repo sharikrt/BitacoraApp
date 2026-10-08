@@ -17,19 +17,6 @@ export async function initDatabase(): Promise<void> {
     if (!usersFile.exists) {
       await usersFile.write(HEADER);
       console.log("✅ Base de datos creada en:", usersFile.uri);
-
-      await insertUser({
-        email: "admin@unicaribe.edu",
-        passwordHash: hashPassword("Admin123"),
-        nombre: "Administradora",
-        fechaRegistro: new Date().toISOString().split("T")[0],
-      });
-      await insertUser({
-        email: "profesor@unicaribe.edu",
-        passwordHash: hashPassword("Profesor123"),
-        nombre: "Profesor Demo",
-        fechaRegistro: new Date().toISOString().split("T")[0],
-      });
     }
   } catch (error) {
     console.error("❌ Error inicializando DB:", error);
